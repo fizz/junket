@@ -68,3 +68,5 @@ gem 'refills', group: [:development, :test]
 gem 'jazz_fingers', group: [:development, :test]
 gem 'annotate'
 gem 'rubocop', require: false
+
+gem 'paper_trail'
