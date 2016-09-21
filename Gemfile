@@ -72,3 +72,4 @@ gem 'rubocop', require: false
 gem 'paper_trail'
 gem 'slim-rails'
 gem 'rails-footnotes', '~> 4.0', group: :development
+gem 'meta_request', group: :development
