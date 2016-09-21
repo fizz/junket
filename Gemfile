@@ -74,3 +74,4 @@ gem 'slim-rails'
 gem 'rails-footnotes', '~> 4.0', group: :development
 gem 'meta_request', group: :development
 gem 'responders'
+gem 'brakeman', :require => false, :group => :development
