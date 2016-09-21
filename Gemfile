@@ -70,3 +70,4 @@ gem 'annotate'
 gem 'rubocop', require: false
 
 gem 'paper_trail'
+gem 'slim-rails'
