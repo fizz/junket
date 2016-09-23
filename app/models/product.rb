@@ -2,14 +2,18 @@
 #
 # Table name: products
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  permalink   :string
-#  description :text
-#  price       :integer
-#  user_id     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                :integer          not null, primary key
+#  name              :string
+#  permalink         :string
+#  description       :text
+#  price             :integer
+#  user_id           :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  file_file_name    :string
+#  file_content_type :string
+#  file_file_size    :integer
+#  file_updated_at   :datetime
 #
 # Indexes
 #
@@ -21,5 +25,6 @@
 #
 
 class Product < ApplicationRecord
+  has_attached_file :file
   belongs_to :user
 end
