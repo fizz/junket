@@ -86,3 +86,4 @@ gem 'pry-theme'
 gem 'parity'
 
 gem 'devise'
+gem 'paperclip'
