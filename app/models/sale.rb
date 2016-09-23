@@ -12,6 +12,7 @@
 #
 # Indexes
 #
+#  index_sales_on_guid        (guid) UNIQUE
 #  index_sales_on_product_id  (product_id)
 #
 # Foreign Keys
