@@ -84,3 +84,5 @@ gem "pry-rails"
 gem 'pry-theme'
 
 gem 'parity'
+
+gem 'devise'
