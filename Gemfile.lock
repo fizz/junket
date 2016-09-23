@@ -163,6 +163,7 @@ GEM
     paper_trail (5.2.2)
       activerecord (>= 3.0, < 6.0)
       request_store (~> 1.1)
+    parity (1.0.0)
     parser (2.3.1.4)
       ast (~> 2.2)
     pg (0.18.4)
@@ -370,6 +371,7 @@ DEPENDENCIES
   neat (~> 1.8.0)
   normalize-rails (~> 3.0.0)
   paper_trail
+  parity
   pg
   pry-byebug
   pry-rails

@@ -82,3 +82,5 @@ end
 gem "pry-byebug"
 gem "pry-rails"
 gem 'pry-theme'
+
+gem 'parity'
