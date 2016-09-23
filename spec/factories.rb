@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :sale do
+    email "MyString"
+    guid ""
+    product nil
+    stripe_id "MyString"
+  end
   factory :product do
     name "MyString"
     permalink "MyString"
