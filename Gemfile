@@ -36,6 +36,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "rspec-rails", "~> 3.5.0.beta4"
+  gem 'ffaker'
 end
 
 group :development, :staging do
