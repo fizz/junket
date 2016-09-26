@@ -16,6 +16,10 @@ html[lang="en"]
   |  <body class="
   = body_class
   | ">
+  - if user_signed_in?
+      = render 'shared/logged_in_header'
+  - else
+      = render 'shared/logged_out_header'
   = render "flashes"
   = yield
   = render "javascript"
