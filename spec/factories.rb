@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :profile do
+    bio "MyText"
+    user
+  end
   factory :user do
     name FFaker::Name.name
     email FFaker::Internet.email
