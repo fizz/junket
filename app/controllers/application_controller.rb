@@ -4,9 +4,10 @@ class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
   respond_to :html
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_paper_trail_whodunnit
 
   protect_from_forgery with: :exception
+
+  before_action :set_paper_trail_whodunnit
 
   protected
 
