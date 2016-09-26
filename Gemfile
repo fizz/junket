@@ -35,9 +35,8 @@ group :development, :test do
   gem "bundler-audit", ">= 0.5.0", require: false
   gem "dotenv-rails"
   gem "factory_girl_rails"
-  gem "pry-byebug"
-  gem "pry-rails"
   gem "rspec-rails", "~> 3.5.0.beta4"
+  gem 'ffaker'
 end
 
 group :development, :staging do
@@ -80,3 +79,11 @@ group :test do
   gem 'rspec-instafail', :require => false
   gem 'fuubar'
 end
+
+gem "pry-byebug"
+gem "pry-rails"
+gem 'pry-theme'
+
+gem 'parity'
+
+gem 'devise'
