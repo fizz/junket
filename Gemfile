@@ -88,4 +88,6 @@ gem 'pry-theme'
 gem 'parity'
 
 gem 'devise'
+gem 'pundit'
+
 gem 'rails_best_practices'

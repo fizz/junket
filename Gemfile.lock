@@ -197,6 +197,8 @@ GEM
     pry-theme (1.0.1)
       json
     puma (3.6.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.1)
     rack-canonical-host (0.2.2)
       addressable (> 0, < 3)
@@ -406,6 +408,7 @@ DEPENDENCIES
   pry-rails
   pry-theme
   puma
+  pundit
   rack-canonical-host
   rack-mini-profiler
   rack-timeout
