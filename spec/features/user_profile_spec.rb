@@ -1,0 +1,29 @@
+require 'rails_helper'
+include Features::SessionHelpers
+
+RSpec.feature "UserProfile", type: :feature do
+  let(:user) {FactoryGirl.create(:user)}
+
+  before do
+    visit new_user_session_path
+    sign_in(user)
+  end
+
+  scenario "host creates profile" do
+    visit new_user_profile_path(user)
+    profile_pic_path = 'spec/fixtures/files/profile_pic.jpg'
+    attach_file "profile[profile_pic]", profile_pic_path
+    fill_in "profile[bio]", with: FFaker::Lorem.paragraph(2)
+    click_button "Create Profile"
+    expect(page).to have_content("Profile was successfully created.")
+    profile = Profile.last
+    binding.pry
+    expect(profile).to have_attributes(profile_pic_file_name: a_value)
+  end
+
+  def fill_in_signin_fields
+    fill_in "user_email", with: user.email
+    fill_in "user_password", with: user.password
+    click_button "Log in"
+  end
+end

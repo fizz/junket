@@ -52,6 +52,7 @@ group :test do
   gem "simplecov", require: false
   gem "timecop"
   gem "webmock"
+  gem 'rails-controller-testing'
 end
 
 group :staging, :production do
@@ -87,4 +88,7 @@ gem 'pry-theme'
 gem 'parity'
 
 gem 'devise'
+gem 'pundit'
+gem 'paperclip'
+
 gem 'rails_best_practices'

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "UserSession", type: :feature do
   let(:user) {FactoryGirl.create(:user)}
+
   scenario 'User visits the site to log in' do
     visit root_path
     click_link 'Log in'
