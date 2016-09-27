@@ -17,7 +17,6 @@ RSpec.feature "UserProfile", type: :feature do
     click_button "Create Profile"
     expect(page).to have_content("Profile was successfully created.")
     profile = Profile.last
-    binding.pry
     expect(profile).to have_attributes(profile_pic_file_name: a_value)
   end
 
