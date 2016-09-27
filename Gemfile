@@ -89,5 +89,6 @@ gem 'parity'
 
 gem 'devise'
 gem 'pundit'
+gem 'paperclip'
 
 gem 'rails_best_practices'

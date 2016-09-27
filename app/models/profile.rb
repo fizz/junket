@@ -2,11 +2,15 @@
 #
 # Table name: profiles
 #
-#  id         :integer          not null, primary key
-#  bio        :text
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                       :integer          not null, primary key
+#  bio                      :text
+#  user_id                  :integer
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  profile_pic_file_name    :string
+#  profile_pic_content_type :string
+#  profile_pic_file_size    :integer
+#  profile_pic_updated_at   :datetime
 #
 # Indexes
 #
@@ -21,4 +25,8 @@ class Profile < ApplicationRecord
   validates_presence_of :bio
   validates_presence_of :user_id
   belongs_to :user
+  has_attached_file :profile_pic,
+    styles: {small: '100x100#'},
+    default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 end
