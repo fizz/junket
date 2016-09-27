@@ -47,7 +47,7 @@ class ProfilesController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:user_id])
+      @user = User.find_by(token: params[:token])
     end
 
     def set_profile
@@ -55,6 +55,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:bio, :user_id, :profile_pic)
+      params.require(:profile).permit(:bio, :user_token, :profile_pic)
     end
 end
