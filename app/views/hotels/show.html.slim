@@ -1,0 +1,25 @@
+p
+  strong Name:
+  = @hotel.name
+p
+  strong Description:
+  = @hotel.description
+p
+  strong Address
+  = @hotel.address_1
+  br
+  = @hotel.address_2
+  br
+  = @hotel.city
+  |,
+  = @hotel.region
+  br
+  = @hotel.zip_code
+  br
+  = @hotel.country
+p
+  strong User:
+  = @hotel.user
+p
+  strong Photo
+  = image_tag @hotel.hotel_pic.url(:small)

@@ -30,4 +30,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :name
   has_one :profile
+  has_many :hotels
 end

@@ -91,4 +91,5 @@ gem 'devise'
 gem 'pundit'
 gem 'paperclip'
 
+gem 'country_select'
 gem 'rails_best_practices'
