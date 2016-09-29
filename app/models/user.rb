@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string
+#  role                   :enum
 #
 # Indexes
 #
@@ -26,6 +27,12 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  enum role: {
+    guest: 'guest',
+    host: 'host',
+    admin: 'admin',
+    vip: 'vip'
+  }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :name
