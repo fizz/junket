@@ -36,6 +36,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :name
+  validates_presence_of :role
   has_one :profile
   has_many :hotels
 end
