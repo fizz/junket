@@ -126,6 +126,8 @@ GEM
       railties (>= 3.0.0)
     ffaker (2.2.0)
     ffi (1.9.14)
+    fix-db-schema-conflicts (2.0.0)
+      rubocop (>= 0.38.0)
     flutie (2.0.0)
     formulaic (0.3.0)
       activesupport
@@ -411,6 +413,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   ffaker
+  fix-db-schema-conflicts
   flutie
   formulaic
   fuubar

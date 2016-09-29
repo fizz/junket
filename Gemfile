@@ -93,3 +93,4 @@ gem 'paperclip'
 
 gem 'country_select'
 gem 'rails_best_practices'
+gem 'fix-db-schema-conflicts', :group => :development
