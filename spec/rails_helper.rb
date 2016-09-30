@@ -5,6 +5,7 @@ abort("DATABASE_URL environment variable is set") if ENV["DATABASE_URL"]
 
 require "rspec/rails"
 require "pundit/rspec"
+require "pundit/matchers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
 
