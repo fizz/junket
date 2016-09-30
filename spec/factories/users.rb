@@ -15,5 +15,8 @@ FactoryGirl.define do
     trait :with_profile do
       profile
     end
+    trait :with_hotels do
+      hotels {build_list :hotel, 1}
+    end
   end
 end
