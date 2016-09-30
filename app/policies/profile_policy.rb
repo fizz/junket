@@ -1,6 +1,6 @@
 class ProfilePolicy < ApplicationPolicy
   def index?
-    @user
+    @user && @user.profile == @record
   end
 
   def show?
@@ -8,11 +8,11 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def new?
-    @user
+    @user && @record.user_id == @user.id
   end
 
   def create?
-    @user
+    @user && @record.user_id == @user.id
   end
 
   def update?
@@ -26,5 +26,4 @@ class ProfilePolicy < ApplicationPolicy
   def destroy?
     @user && @user.profile == @record
   end
-
 end
