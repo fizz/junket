@@ -1,29 +1,29 @@
 class HotelPolicy < ApplicationPolicy
   def index?
-    @user
+    @user && (@user.hotels.include?(@record) || @user.admin?)
   end
 
   def show?
-    @user
+    true
   end
 
   def new?
-    @user
+    create?
   end
 
   def create?
-    @user
+    @user && (@record.user_id == @user.id || @user.admin?)
   end
 
   def update?
-    @user && @user.hotels.include?(@record)
+    @user && (@user.hotels.include?(@record) || @user.admin?)
   end
 
   def edit?
-    @user && @user.hotels.include?(@record)
+    update?
   end
 
   def destroy?
-    @user && @user.hotels.include?(@record)
+    @user && (@user.hotels.include?(@record) || @user.admin?)
   end
 end

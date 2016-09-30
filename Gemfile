@@ -93,3 +93,7 @@ gem 'paperclip'
 
 gem 'country_select'
 gem 'rails_best_practices'
+gem 'fix-db-schema-conflicts', :group => :development
+group :test do
+  gem 'pundit-matchers', '~> 1.1.0'
+end

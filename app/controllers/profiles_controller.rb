@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :set_user
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   respond_to :html
@@ -51,7 +51,7 @@ class ProfilesController < ApplicationController
     end
 
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = @user.profile
     end
 
     def profile_params

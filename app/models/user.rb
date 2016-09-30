@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string
+#  role                   :enum
 #
 # Indexes
 #
@@ -24,11 +25,23 @@
 #
 
 class User < ApplicationRecord
+  after_initialize :set_default_role, :if => :new_record?
+  enum role: {
+    guest: 'guest',
+    host: 'host',
+    admin: 'admin',
+    vip: 'vip'
+  }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :name
+  validates_presence_of :role
   has_one :profile
   has_many :hotels
+  private
+  def set_default_role
+    self.role ||= :guest
+  end
 end

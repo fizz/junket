@@ -1,45 +1,50 @@
 require 'rails_helper'
 
 RSpec.describe ProfilePolicy do
+  subject {described_class.new(user, profile)}
 
-  let(:user) { User.new }
+  let(:profile) {FactoryGirl.create(:profile)}
 
-  subject { described_class }
-
-  context "for a visitor" do
-    let(:user) { nil }
-    let(:profile) { FactoryGirl.create(:profile) }
-    permissions :index?, :show?, :new?, :edit?, :create?, :update?, :destroy? do
-      it "does not grant access for non logged in visitors" do
-        expect(subject).not_to permit(user, profile )
-      end
-    end
+  context "being logged out" do
+    let(:user) {nil}
+    it { is_expected.to forbid_new_and_create_actions }
+    it { is_expected.to forbid_edit_and_update_actions }
+    it { is_expected.to forbid_action :index }
+    it { is_expected.to forbid_action :destroy }
+    it { is_expected.to forbid_action :show }
   end
 
-  context "for user viewing other users’ profiles or creating a profile" do
-    let(:profile) { FactoryGirl.create(:profile) }
-    let(:user) { FactoryGirl.create(:user) }
+  context "being logged in, own profile" do
+    let(:user) {FactoryGirl.create(:user, :with_profile)}
+    let(:profile) {user.profile}
 
-    permissions :index?, :show?, :new?, :create? do
-      it "grants access to user" do
-        expect(subject).to permit(user, profile)
-      end
-    end
-
-    permissions :edit?, :update?, :destroy? do
-      it "denies access to user for whom the profile does not belong" do
-        expect(subject).not_to permit(user, profile )
-      end
-    end
+    it { is_expected.to permit_new_and_create_actions }
+    it { is_expected.to permit_edit_and_update_actions }
+    it { is_expected.to permit_action :index}
+    it { is_expected.to permit_action :destroy}
+    it { is_expected.to permit_action :show}
   end
 
-  context "for user editing own profile" do
-    let(:user) { FactoryGirl.create(:user) }
-    permissions :edit?, :update?, :destroy? do
-      it "grants access if profile belongs to user" do
-        expect(subject).to permit(user, Profile.create!(user_id: user.id, bio: 'Lorem Ipsum'))
-      end
-    end
+  context "being logged in, others' profiles" do
+    let(:user) {FactoryGirl.create(:user)}
+    let(:profile) {FactoryGirl.create(:profile)}
+
+    it { is_expected.to forbid_new_and_create_actions }
+    it { is_expected.to forbid_edit_and_update_actions }
+    it { is_expected.to forbid_action :index}
+    it { is_expected.to forbid_action :destroy}
+    it { is_expected.to permit_action :show}
+  end
+
+  context "being logged in as an admin" do
+    let(:user) {FactoryGirl.create(:user, :admin)}
+    let(:profile) {FactoryGirl.create(:profile)}
+
+    it { is_expected.to permit_new_and_create_actions }
+    it { is_expected.to permit_edit_and_update_actions }
+    it { is_expected.to permit_action :index}
+    it { is_expected.to permit_action :destroy}
+    it { is_expected.to permit_action :show}
   end
 
 end
