@@ -6,7 +6,7 @@ RSpec.describe ProfilePolicy do
   let(:profile) {FactoryGirl.create(:profile)}
 
   context "being logged out" do
-    let!(:user) {nil}
+    let(:user) {nil}
     it { is_expected.to forbid_new_and_create_actions }
     it { is_expected.to forbid_edit_and_update_actions }
     it { is_expected.to forbid_action :index }
@@ -26,8 +26,8 @@ RSpec.describe ProfilePolicy do
   end
 
   context "being logged in, others' profiles" do
-    let!(:user) {FactoryGirl.create(:user)}
-    let!(:profile) {FactoryGirl.create(:profile)}
+    let(:user) {FactoryGirl.create(:user)}
+    let(:profile) {FactoryGirl.create(:profile)}
 
     it { is_expected.to forbid_new_and_create_actions }
     it { is_expected.to forbid_edit_and_update_actions }
