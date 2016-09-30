@@ -22,6 +22,7 @@
 #
 
 class Profile < ApplicationRecord
+  model_name.instance_variable_set(:@route_key, 'profile')
   validates_presence_of :bio
   validates_presence_of :user_id
   belongs_to :user

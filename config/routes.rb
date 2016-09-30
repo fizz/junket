@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   resources :users do
-    resources :profiles
+    resource :profile
     resources :hotels
   end
-  root 'home#index'
 
+  root 'home#index'
 end

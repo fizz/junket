@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
     @profile = @user.create_profile(profile_params)
     authorize @profile
     @profile.save
-    respond_with(@user, @profile)
+    respond_with(@user, @profile, location: -> { user_profile_path(@user) })
   end
 
   def update
@@ -51,7 +51,7 @@ class ProfilesController < ApplicationController
     end
 
     def set_profile
-      @profile = @user.profile
+      @profile = @user.profile || @user.build_profile
     end
 
     def profile_params

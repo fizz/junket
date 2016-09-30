@@ -91,7 +91,7 @@ RSpec.describe ProfilesController, type: :controller do
 
       it "redirects to the created profile" do
         post :create, params: {user_id: user.id, profile: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(user_profile_path(user, user.profile))
+        expect(response).to redirect_to(user_profile_path(user))
       end
     end
 
