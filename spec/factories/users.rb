@@ -12,5 +12,8 @@ FactoryGirl.define do
     trait :admin do
       role :admin
     end
+    trait :with_profile do
+      profile
+    end
   end
 end
