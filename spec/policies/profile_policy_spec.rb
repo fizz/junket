@@ -35,4 +35,16 @@ RSpec.describe ProfilePolicy do
     it { is_expected.to forbid_action :destroy}
     it { is_expected.to permit_action :show}
   end
+
+  context "being logged in as an admin" do
+    let(:user) {FactoryGirl.create(:user, :admin)}
+    let(:profile) {FactoryGirl.create(:profile)}
+
+    it { is_expected.to permit_new_and_create_actions }
+    it { is_expected.to permit_edit_and_update_actions }
+    it { is_expected.to permit_action :index}
+    it { is_expected.to permit_action :destroy}
+    it { is_expected.to permit_action :show}
+  end
+
 end
