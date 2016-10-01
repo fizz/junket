@@ -30,7 +30,7 @@ class HotelsController < ApplicationController
     @hotel = @user.hotels.create(hotel_params)
     authorize @hotel
     @hotel.save
-    respond_with(@user, @hotel)
+    respond_with(@user, @hotel, location: -> { hotel_path(@hotel) })
   end
 
   def update
@@ -47,7 +47,11 @@ class HotelsController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:user_id])
+      if params[:user_id].present?
+        @user = User.find(params[:user_id])
+      else
+        @user = current_user
+      end
     end
 
     def set_hotel

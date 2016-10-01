@@ -47,7 +47,11 @@ class ProfilesController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:user_id])
+      if params[:user_id].present?
+        @user = User.find(params[:user_id])
+      else
+        @user = current_user
+      end
     end
 
     def set_profile
