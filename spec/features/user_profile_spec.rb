@@ -9,7 +9,7 @@ RSpec.feature "UserProfile", type: :feature do
     sign_in(user)
   end
 
-  scenario "host creates profile" do
+  scenario "user creates profile" do
     visit new_user_profile_path(user)
     profile_pic_path = 'spec/fixtures/files/profile_pic.jpg'
     attach_file "profile[profile_pic]", profile_pic_path
@@ -18,11 +18,5 @@ RSpec.feature "UserProfile", type: :feature do
     expect(page).to have_content("Profile was successfully created.")
     profile = Profile.last
     expect(profile).to have_attributes(profile_pic_file_name: a_value)
-  end
-
-  def fill_in_signin_fields
-    fill_in "user_email", with: user.email
-    fill_in "user_password", with: user.password
-    click_button "Log in"
   end
 end
