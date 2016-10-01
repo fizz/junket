@@ -17,9 +17,13 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = @user.build_profile
-    authorize @profile
-    respond_with(@user, @profile)
+    if @user.profile
+      redirect_to edit_user_profile_path(@user, @profile)
+    else
+      @profile = @user.build_profile
+      authorize @profile
+      respond_with(@user, @profile)
+    end
   end
 
   def edit
@@ -36,7 +40,7 @@ class ProfilesController < ApplicationController
   def update
     authorize @profile
     @profile.update(profile_params)
-    respond_with(@user, @profile)
+    respond_with(@user, @profile, location: -> { user_profile_path(@user) })
   end
 
   def destroy
