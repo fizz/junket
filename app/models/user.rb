@@ -38,7 +38,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :name
   validates_presence_of :role
-  has_one :profile
+  has_one :profile, dependent: :destroy
   has_many :hotels
   private
   def set_default_role
