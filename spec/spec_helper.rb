@@ -9,6 +9,10 @@ if ENV.fetch("COVERAGE", false)
   SimpleCov.start "rails"
 end
 
+require "simplecov"
+SimpleCov.coverage_dir('public/coverage')
+SimpleCov.start "rails"
+
 require "webmock/rspec"
 
 # http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

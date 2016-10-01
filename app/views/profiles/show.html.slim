@@ -1,0 +1,9 @@
+p
+  strong Bio:
+  = @profile.bio
+p
+  strong User:
+  = @profile.user
+p
+  strong Photo
+  = image_tag @profile.profile_pic.url(:small)
