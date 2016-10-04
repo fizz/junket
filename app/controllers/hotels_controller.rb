@@ -6,8 +6,15 @@ class HotelsController < ApplicationController
   respond_to :html
 
   def index
-    authorize @hotel
-    @hotels = Hotel.all
+    if params[:user_id].present?
+      @hotels = @user.hotels
+      @hotels.each do |hotel|
+        authorize hotel
+      end
+    else
+      @hotels = Hotel.all
+    end
+
     respond_with(@hotels)
   end
 

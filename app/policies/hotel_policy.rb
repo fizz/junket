@@ -1,6 +1,6 @@
 class HotelPolicy < ApplicationPolicy
   def index?
-    @user && (@user.hotels.include?(@record) || @user.admin?)
+    @user.admin? || @record.user_id == @user.id
   end
 
   def show?
