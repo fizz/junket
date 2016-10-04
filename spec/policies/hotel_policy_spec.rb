@@ -9,7 +9,7 @@ RSpec.describe HotelPolicy do
     let(:user) { nil }
     it { is_expected.to forbid_new_and_create_actions }
     it { is_expected.to forbid_edit_and_update_actions }
-    it { is_expected.to forbid_action :index }
+    # it { is_expected.to permit_action :index }
     it { is_expected.to forbid_action :destroy }
     it { is_expected.to permit_action :show }
   end
