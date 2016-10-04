@@ -1,0 +1,29 @@
+h1 Listing rooms
+
+table
+  thead
+    tr
+      th Room type
+      th Hotel
+      th Number
+      th Price in cents
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @rooms.each do |room|
+      tr
+        td = room.room_type
+        td = room.hotel
+        td = room.number
+        td = room.price_in_cents
+        td = room.name
+        td = link_to 'Show', room
+        td = link_to 'Edit', edit_room_path(room)
+        td = link_to 'Destroy', room, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Room', new_room_path
