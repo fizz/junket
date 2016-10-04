@@ -20,4 +20,5 @@ table
 
 br
 
-= link_to 'New Hotel', new_hotel_path
+- if @user
+  = link_to 'New Hotel', new_user_hotel_path(@user)

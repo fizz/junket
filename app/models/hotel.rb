@@ -3,33 +3,37 @@
 # Table name: hotels
 #
 #  id                     :integer          not null, primary key
-#  name                   :string
 #  address_1              :string
 #  address_2              :string
 #  city                   :string
-#  region                 :string
-#  zip_code               :string
 #  country                :string
-#  description            :text
-#  user_id                :integer
 #  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  hotel_pic_file_name    :string
+#  description            :text
 #  hotel_pic_content_type :string
+#  hotel_pic_file_name    :string
 #  hotel_pic_file_size    :integer
 #  hotel_pic_updated_at   :datetime
+#  name                   :string
+#  region                 :string
+#  updated_at             :datetime         not null
+#  user_id                :integer
+#  zip_code               :string
+#  rooms_id               :integer
 #
 # Indexes
 #
-#  index_hotels_on_user_id  (user_id)
+#  index_hotels_on_rooms_id  (rooms_id)
+#  index_hotels_on_user_id   (user_id)
 #
 # Foreign Keys
 #
 #  fk_rails_0b43c6c3aa  (user_id => users.id)
+#  fk_rails_697aef536b  (rooms_id => rooms.id)
 #
 
 class Hotel < ApplicationRecord
   belongs_to :user
+  has_many :rooms
   validates_presence_of :name
   validates_presence_of :user_id
   has_attached_file :hotel_pic,

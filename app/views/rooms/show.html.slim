@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Room type:
+  = @room.room_type
+p
+  strong Hotel:
+  = @room.hotel
+p
+  strong Number:
+  = @room.number
+p
+  strong Price in cents:
+  = @room.price_in_cents
+p
+  strong Name:
+  = @room.name
+
+= link_to 'Edit', edit_room_path(@room)
+'|
+= link_to 'Back', rooms_path

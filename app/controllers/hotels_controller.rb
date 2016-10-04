@@ -1,13 +1,20 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    authorize @hotel
-    @hotels = Hotel.all
+    if params[:user_id].present?
+      @hotels = @user.hotels
+      @hotels.each do |hotel|
+        authorize hotel
+      end
+    else
+      @hotels = Hotel.all
+    end
+
     respond_with(@hotels)
   end
 

@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_action :set_paper_trail_whodunnit
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  # after_action :verify_authorized #TODO uncomment this, fix resulting breakage
 
   protected
 

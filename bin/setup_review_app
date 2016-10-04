@@ -9,6 +9,8 @@ if [ -z "$1" ]; then
   exit 64
 fi
 
+heroku git:remote -r junket-staging-pr-$1 -a junket-staging-pr-$1
+
 heroku pg:backups restore \
   `heroku pg:backups public-url -a junket-staging` \
   DATABASE_URL \
